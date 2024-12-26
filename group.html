@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract +92 Phone Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        #results {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Extract +92 Phone Numbers</h1>
+<textarea id="inputText" placeholder="Paste your text here..."></textarea>
+<button onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
+
+<div id="results"></div>
+
+<script>
+    function extractPhoneNumbers() {
+        const inputText = document.getElementById('inputText').value;
+        const pattern = /\+92\d{10}/g; // Regular expression to match +92 followed by 10 digits
+        const matches = inputText.match(pattern);
+        
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // Clear previous results
+
+        if (matches) {
+            resultsDiv.innerHTML = '<h3>Extracted Phone Numbers:</h3><ul>' + 
+                matches.map(number => `<li>${number}</li>`).join('') + 
+                '</ul>';
+        } else {
+            resultsDiv.innerHTML = '<p>No phone numbers found.</p>';
+        }
+    }
+</script>
+
+</body>
+</html>
